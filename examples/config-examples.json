@@ -1,0 +1,60 @@
+{
+  "claude_desktop": {
+    "description": "Add to ~/Library/Application Support/Claude/claude_desktop_config.json",
+    "config": {
+      "mcpServers": {
+        "motion": {
+          "command": "npx",
+          "args": ["-y", "@h3ro-dev/motion-mcp-server"],
+          "env": {
+            "MOTION_API_KEY": "your-motion-api-key"
+          }
+        }
+      }
+    }
+  },
+  "cursor": {
+    "description": "Add to .cursor/mcp.json in your project",
+    "config": {
+      "mcpServers": {
+        "motion": {
+          "command": "npx",
+          "args": ["-y", "@h3ro-dev/motion-mcp-server"],
+          "env": {
+            "MOTION_API_KEY": "your-motion-api-key"
+          }
+        }
+      }
+    }
+  },
+  "with_debug": {
+    "description": "Enable debug logging",
+    "config": {
+      "mcpServers": {
+        "motion": {
+          "command": "npx",
+          "args": ["-y", "@h3ro-dev/motion-mcp-server"],
+          "env": {
+            "MOTION_API_KEY": "your-motion-api-key",
+            "DEBUG": "true"
+          }
+        }
+      }
+    }
+  },
+  "with_custom_database": {
+    "description": "Use custom database location",
+    "config": {
+      "mcpServers": {
+        "motion": {
+          "command": "npx",
+          "args": ["-y", "@h3ro-dev/motion-mcp-server"],
+          "env": {
+            "MOTION_API_KEY": "your-motion-api-key",
+            "DATABASE_PATH": "/path/to/custom/motion-rate-limit.db"
+          }
+        }
+      }
+    }
+  }
+}

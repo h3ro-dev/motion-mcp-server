@@ -1,12 +1,40 @@
 {
   "name": "@h3ro-dev/motion-mcp-server",
-  "version": "0.1.0",
-  "description": "A comprehensive Model Context Protocol (MCP) server for Motion API integration",
+  "version": "1.0.0",
+  "description": "Connect AI assistants to Motion for task and project management",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "motion",
+    "task-management",
+    "project-management",
+    "productivity",
+    "ai-assistant",
+    "claude",
+    "cursor",
+    "api"
+  ],
+  "homepage": "https://github.com/h3ro-dev/motion-mcp-server#readme",
+  "bugs": {
+    "url": "https://github.com/h3ro-dev/motion-mcp-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h3ro-dev/motion-mcp-server.git"
+  },
+  "license": "MIT",
+  "author": "h3ro-dev",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "motion-mcp": "./dist/index.js"
+    "motion-mcp-server": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "mcp.json"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
@@ -17,26 +45,9 @@
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run typecheck"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CryptoJym/motion-mcp-server.git"
-  },
-  "keywords": [
-    "mcp",
-    "motion",
-    "task-management",
-    "project-management",
-    "api",
-    "ai-assistant"
-  ],
-  "author": "h3ro",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CryptoJym/motion-mcp-server/issues"
-  },
-  "homepage": "https://github.com/CryptoJym/motion-mcp-server#readme",
   "devDependencies": {
     "@types/node": "^24.0.4",
     "tsx": "^4.20.3",

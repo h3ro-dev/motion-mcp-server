@@ -1,0 +1,213 @@
+{
+  "name": "@h3ro-dev/motion-mcp-server",
+  "description": "Connect AI assistants to Motion for task and project management",
+  "version": "1.0.0",
+  "author": "h3ro-dev",
+  "license": "MIT",
+  "homepage": "https://github.com/h3ro-dev/motion-mcp-server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h3ro-dev/motion-mcp-server.git"
+  },
+  "categories": [
+    "productivity",
+    "task-management",
+    "project-management"
+  ],
+  "keywords": [
+    "motion",
+    "task",
+    "project",
+    "workspace",
+    "productivity",
+    "mcp",
+    "model-context-protocol"
+  ],
+  "installation": {
+    "npm": {
+      "global": "@h3ro-dev/motion-mcp-server",
+      "command": "motion-mcp-server"
+    },
+    "npx": {
+      "package": "@h3ro-dev/motion-mcp-server",
+      "args": ["-y"]
+    }
+  },
+  "configuration": {
+    "required": {
+      "MOTION_API_KEY": {
+        "description": "Your Motion API key",
+        "type": "string",
+        "sensitive": true,
+        "instructions": "Get from Motion → Settings → API & Integrations → Create New API Key"
+      }
+    },
+    "optional": {
+      "MOTION_BASE_URL": {
+        "description": "Motion API base URL",
+        "type": "string",
+        "default": "https://api.usemotion.com/v1"
+      },
+      "RATE_LIMIT_WINDOW_MS": {
+        "description": "Rate limit window in milliseconds",
+        "type": "number",
+        "default": 180000
+      },
+      "RATE_LIMIT_MAX_REQUESTS": {
+        "description": "Maximum requests per window",
+        "type": "number",
+        "default": 12
+      },
+      "DATABASE_PATH": {
+        "description": "SQLite database path for rate limiting",
+        "type": "string",
+        "default": "./motion-rate-limit.db"
+      },
+      "DEBUG": {
+        "description": "Enable debug logging",
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "examples": {
+    "claude_desktop": {
+      "mcpServers": {
+        "motion": {
+          "command": "npx",
+          "args": ["-y", "@h3ro-dev/motion-mcp-server"],
+          "env": {
+            "MOTION_API_KEY": "your-api-key"
+          }
+        }
+      }
+    },
+    "cursor": {
+      "mcpServers": {
+        "motion": {
+          "command": "npx",
+          "args": ["-y", "@h3ro-dev/motion-mcp-server"],
+          "env": {
+            "MOTION_API_KEY": "your-api-key"
+          }
+        }
+      }
+    }
+  },
+  "tools": {
+    "tasks": [
+      {
+        "name": "motion_list_tasks",
+        "description": "List tasks with optional filtering",
+        "parameters": {
+          "workspaceId": "Filter by workspace",
+          "projectId": "Filter by project",
+          "assigneeId": "Filter by assignee",
+          "status": "Filter by status (array)",
+          "label": "Filter by label",
+          "name": "Filter by name"
+        }
+      },
+      {
+        "name": "motion_get_task",
+        "description": "Get detailed task information",
+        "parameters": {
+          "taskId": "Task ID (required)"
+        }
+      },
+      {
+        "name": "motion_create_task",
+        "description": "Create a new task",
+        "parameters": {
+          "name": "Task name (required)",
+          "workspaceId": "Workspace ID (required)",
+          "description": "HTML description",
+          "dueDate": "ISO 8601 date",
+          "priority": "ASAP | HIGH | MEDIUM | LOW"
+        }
+      },
+      {
+        "name": "motion_update_task",
+        "description": "Update an existing task",
+        "parameters": {
+          "taskId": "Task ID (required)",
+          "status": "New status",
+          "priority": "New priority"
+        }
+      },
+      {
+        "name": "motion_delete_task",
+        "description": "Delete a task",
+        "parameters": {
+          "taskId": "Task ID (required)"
+        }
+      },
+      {
+        "name": "motion_move_task",
+        "description": "Move task to different workspace",
+        "parameters": {
+          "taskId": "Task ID (required)",
+          "workspaceId": "Target workspace (required)"
+        }
+      },
+      {
+        "name": "motion_unassign_task",
+        "description": "Remove task assignee",
+        "parameters": {
+          "taskId": "Task ID (required)"
+        }
+      }
+    ],
+    "projects": [
+      {
+        "name": "motion_list_projects",
+        "description": "List all projects in a workspace",
+        "parameters": {
+          "workspaceId": "Workspace ID (required)"
+        }
+      },
+      {
+        "name": "motion_get_project",
+        "description": "Get project details",
+        "parameters": {
+          "projectId": "Project ID (required)"
+        }
+      },
+      {
+        "name": "motion_create_project",
+        "description": "Create new project",
+        "parameters": {
+          "name": "Project name (required)",
+          "workspaceId": "Workspace ID (required)"
+        }
+      },
+      {
+        "name": "motion_update_project",
+        "description": "Update project",
+        "parameters": {
+          "projectId": "Project ID (required)",
+          "name": "New name"
+        }
+      },
+      {
+        "name": "motion_archive_project",
+        "description": "Archive a project",
+        "parameters": {
+          "projectId": "Project ID (required)"
+        }
+      }
+    ],
+    "other": [
+      "motion_list_workspaces",
+      "motion_get_workspace",
+      "motion_list_users",
+      "motion_get_current_user",
+      "motion_list_comments",
+      "motion_create_comment",
+      "motion_list_recurring_tasks",
+      "motion_create_recurring_task",
+      "motion_delete_recurring_task",
+      "motion_list_schedules"
+    ]
+  }
+}
