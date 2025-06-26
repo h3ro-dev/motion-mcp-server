@@ -1,0 +1,19 @@
+# Task ID: 16
+# Title: Develop MCP Tool Structure
+# Status: pending
+# Dependencies: 5, 13, 15
+# Priority: high
+# Description: Create a standardized structure for all MCP tools, ensuring consistency across the server.
+# Details:
+1. Create a 'tool' module in src/tool/
+2. Implement a base class for all MCP tools
+3. Define standard properties: name, description, input schema, output schema
+4. Create utility functions for tool registration and discovery
+5. Implement error handling and logging in the base tool class
+6. Ensure all tools follow naming convention (e.g., motion_list_tasks)
+
+# Test Strategy:
+1. Unit test base tool class
+2. Verify proper tool registration and discovery
+3. Test error handling in tools
+4. Ensure all existing tools conform to the new structure

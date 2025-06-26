@@ -1,0 +1,98 @@
+# Task ID: 6
+# Title: Implement Task Management Endpoints
+# Status: pending
+# Dependencies: 5
+# Priority: high
+# Description: Create MCP tools for task management, including listing, creating, updating, and deleting tasks.
+# Details:
+1. Create a 'tasks' module in src/tools/
+2. Implement 'motion_list_tasks' tool with filtering options
+3. Create 'motion_get_task' tool for detailed task information
+4. Implement 'motion_create_task' with full parameter support
+5. Create 'motion_update_task' for modifying task properties
+6. Implement 'motion_delete_task' tool
+7. Create 'motion_move_task' for moving tasks between workspaces
+8. Implement 'motion_unassign_task' tool
+9. Use Zod for input validation in all tools
+
+# Test Strategy:
+1. Unit test each task management tool
+2. Integration test with mock API responses
+3. Verify proper error handling for each endpoint
+4. Test edge cases like moving tasks between workspaces
+
+# Subtasks:
+## 1. Create tasks module structure and implement motion_list_tasks tool [pending]
+### Dependencies: None
+### Description: Set up the initial tasks module structure in src/tools/ and implement the motion_list_tasks tool with filtering capabilities
+### Details:
+1. Create a new directory src/tools/tasks/
+2. Set up index.ts to export all task tools
+3. Create list-tasks.ts implementing motion_list_tasks
+4. Use Zod for input validation with parameters like workspace, assignee, status, etc.
+5. Implement pagination support
+6. Return a formatted list of tasks with essential properties
+
+## 2. Implement motion_get_task tool [pending]
+### Dependencies: 6.1
+### Description: Create the motion_get_task tool to retrieve detailed information about a specific task
+### Details:
+1. Create get-task.ts in the tasks module
+2. Implement Zod schema for validating taskId input
+3. Fetch comprehensive task details from the API
+4. Format the response to include all task properties
+5. Handle error cases for non-existent tasks
+
+## 3. Implement motion_create_task tool [pending]
+### Dependencies: 6.1
+### Description: Develop the motion_create_task tool with support for all task creation parameters
+### Details:
+1. Create create-task.ts in the tasks module
+2. Implement comprehensive Zod schema for all task properties (title, description, assignee, due date, priority, etc.)
+3. Transform validated input into API request format
+4. Handle API response and format the newly created task details
+5. Include proper error handling for validation and API errors
+
+## 4. Implement motion_update_task tool [pending]
+### Dependencies: 6.2
+### Description: Create the motion_update_task tool for modifying existing task properties
+### Details:
+1. Create update-task.ts in the tasks module
+2. Implement Zod schema for taskId and all updatable properties
+3. Make all update fields optional except taskId
+4. Transform validated input into API request format
+5. Return the updated task details
+6. Handle cases where the task doesn't exist
+
+## 5. Implement motion_delete_task tool [pending]
+### Dependencies: 6.2
+### Description: Develop the motion_delete_task tool for removing tasks
+### Details:
+1. Create delete-task.ts in the tasks module
+2. Implement Zod schema for taskId validation
+3. Send delete request to the API
+4. Handle success and error responses
+5. Return appropriate confirmation message on successful deletion
+
+## 6. Implement motion_move_task tool [pending]
+### Dependencies: 6.4
+### Description: Create the motion_move_task tool for transferring tasks between workspaces
+### Details:
+1. Create move-task.ts in the tasks module
+2. Implement Zod schema for taskId and targetWorkspaceId
+3. Validate both IDs exist before attempting move
+4. Handle API interaction for workspace transfer
+5. Return updated task details after successful move
+6. Implement proper error handling for invalid workspaces
+
+## 7. Implement motion_unassign_task tool [pending]
+### Dependencies: 6.4
+### Description: Develop the motion_unassign_task tool for removing assignees from tasks
+### Details:
+1. Create unassign-task.ts in the tasks module
+2. Implement Zod schema for taskId validation
+3. Check if task is currently assigned before unassigning
+4. Send unassign request to the API
+5. Return updated task details showing unassigned status
+6. Handle error cases appropriately
+

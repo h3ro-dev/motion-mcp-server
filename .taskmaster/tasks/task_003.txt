@@ -1,0 +1,18 @@
+# Task ID: 3
+# Title: Develop Configuration Module
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create a configuration module to manage environment variables and server settings.
+# Details:
+1. Create a 'config' module in src/config/
+2. Use 'dotenv' library (npm install dotenv) to load environment variables
+3. Implement functions to get MOTION_API_KEY and MOTION_BASE_URL
+4. Create a configuration object with all necessary settings
+5. Implement validation for required configuration values
+6. Add support for multiple Motion accounts/workspaces
+
+# Test Strategy:
+1. Unit test configuration loading
+2. Test handling of missing or invalid configuration
+3. Verify support for multiple accounts/workspaces

@@ -1,0 +1,19 @@
+# Task ID: 7
+# Title: Develop Recurring Tasks Endpoints
+# Status: pending
+# Dependencies: 6
+# Priority: medium
+# Description: Implement MCP tools for managing recurring tasks, including listing, creating, and deleting recurring task series.
+# Details:
+1. Extend 'tasks' module to include recurring tasks
+2. Implement 'motion_list_recurring_tasks' tool with workspace filtering
+3. Create 'motion_create_recurring_task' with support for all frequency patterns
+4. Implement 'motion_delete_recurring_task' for removing recurring task series
+5. Add support for advanced patterns (specific days, week positions, month days)
+6. Use 'rrule' library (npm install rrule) for handling recurring patterns
+
+# Test Strategy:
+1. Unit test each recurring task tool
+2. Test creation of tasks with various recurrence patterns
+3. Verify proper deletion of recurring task series
+4. Integration test with mock API responses

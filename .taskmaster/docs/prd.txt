@@ -1,0 +1,166 @@
+# Motion MCP Server - Product Requirements Document
+
+## Overview
+Build a comprehensive Model Context Protocol (MCP) server for Motion (usemotion.com) that enables AI assistants to interact with the complete Motion API. This server will provide full task management, project management, workspace management, scheduling, and collaboration capabilities through standardized MCP tools.
+
+## Target Users
+- Developers using Motion for task and project management
+- Teams wanting to integrate Motion with AI assistants like Claude, Cursor, or other MCP-compatible tools
+- Organizations looking to automate their Motion workflows through AI
+
+## Core Requirements
+
+### 1. Authentication & Configuration
+- Support Motion API key authentication via X-API-Key header
+- Configuration through environment variables (MOTION_API_KEY, MOTION_BASE_URL)
+- Secure key storage and management
+- Support for multiple Motion accounts/workspaces
+
+### 2. Rate Limiting
+- Implement automatic rate limiting (12 requests per 3-minute rolling window)
+- Use persistent SQLite database for rate limit tracking across restarts
+- Provide clear feedback when rate limits are hit
+- Implement exponential backoff for failed requests
+
+### 3. Core API Endpoints Implementation
+
+#### Tasks Management
+- List tasks with advanced filtering (workspace, project, assignee, status, labels, names)
+- Get detailed task information including custom fields
+- Create tasks with full parameter support (priority, duration, deadlines, etc.)
+- Update any task properties
+- Delete tasks
+- Move tasks between workspaces
+- Unassign task from users
+
+#### Recurring Tasks
+- List recurring tasks by workspace
+- Create recurring tasks with all frequency patterns (daily, weekly, bi-weekly, monthly, quarterly)
+- Support advanced patterns (specific days, week positions, month days)
+- Delete recurring task series
+
+#### Projects
+- List projects with workspace filtering
+- Get detailed project information
+- Create new projects with descriptions and custom fields
+
+#### Workspaces & Users
+- List all accessible workspaces
+- Get user information (current user and all users)
+- List users by workspace or team
+- Get available statuses per workspace
+
+#### Comments & Collaboration
+- Get task comments with pagination
+- Create comments with GitHub Flavored Markdown support
+- Include creator information and timestamps
+
+#### Schedules
+- Get user schedules and availability
+- Support timezone handling
+- Return schedule breakouts by day
+
+#### Custom Fields (if time permits)
+- List all custom fields
+- Create custom fields (text, number, select, person, etc.)
+- Delete custom fields
+- Manage custom field assignments to projects and tasks
+
+### 4. Technical Requirements
+
+#### Architecture
+- TypeScript for type safety
+- MCP SDK for protocol implementation
+- Axios or fetch for HTTP requests
+- SQLite for rate limiting persistence
+- Zod for schema validation
+
+#### Error Handling
+- Comprehensive error messages
+- Proper HTTP status code handling
+- Retry logic for transient failures
+- Graceful degradation
+
+#### Testing
+- Unit tests for all core functions (>80% coverage)
+- Integration tests for API endpoints
+- Mock tests for rate limiting
+- End-to-end tests for complete workflows
+
+#### Documentation
+- Complete README with setup instructions
+- API reference documentation
+- Usage examples for all tools
+- Troubleshooting guide
+- Contributing guidelines
+
+### 5. MCP Tool Structure
+
+Each API endpoint should be exposed as an MCP tool with:
+- Clear tool name following convention (e.g., motion_list_tasks)
+- Comprehensive description
+- Proper input schema validation
+- Helpful error messages
+- Consistent response format
+
+### 6. Performance Requirements
+- Response time < 2 seconds for standard operations
+- Efficient pagination handling
+- Caching for frequently accessed data
+- Minimal memory footprint
+
+### 7. Security Requirements
+- No hardcoded credentials
+- Secure environment variable handling
+- Input validation and sanitization
+- No sensitive data in logs
+
+## Non-Functional Requirements
+
+### Usability
+- Simple installation process
+- Clear configuration instructions
+- Intuitive tool naming
+- Helpful error messages
+
+### Reliability
+- Graceful handling of API downtime
+- Persistent state for rate limiting
+- Automatic recovery from failures
+
+### Maintainability
+- Clean, modular code structure
+- Comprehensive documentation
+- Easy to extend with new endpoints
+- Version compatibility checking
+
+## Success Criteria
+1. All core Motion API endpoints are accessible via MCP tools
+2. Rate limiting prevents API key suspension
+3. Test coverage exceeds 80%
+4. Documentation is complete and clear
+5. Server works seamlessly with Claude Desktop and Cursor
+6. Can handle complex workflows like creating recurring tasks with custom fields
+
+## Future Enhancements
+- Webhook support for real-time updates
+- Batch operations for bulk updates
+- Advanced search capabilities
+- Analytics and reporting tools
+- Integration with other productivity tools
+
+## Technical Stack
+- Language: TypeScript
+- Framework: MCP SDK
+- HTTP Client: Axios
+- Database: SQLite (for rate limiting)
+- Testing: Jest
+- Validation: Zod
+- Build Tools: ESBuild/TSC
+- Package Manager: npm
+
+## Delivery Timeline
+- Week 1: Core infrastructure and authentication
+- Week 2: Task and project endpoints
+- Week 3: Remaining endpoints and testing
+- Week 4: Documentation and polish

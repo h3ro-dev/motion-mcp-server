@@ -1,0 +1,19 @@
+# Task ID: 14
+# Title: Develop Caching Mechanism
+# Status: pending
+# Dependencies: 5
+# Priority: medium
+# Description: Implement a caching system to improve performance for frequently accessed data.
+# Details:
+1. Create a 'cache' module in src/cache/
+2. Use 'node-cache' library (npm install node-cache) for in-memory caching
+3. Implement functions to set and get cached data
+4. Add cache invalidation mechanism
+5. Integrate caching with API client for appropriate endpoints
+6. Implement configurable cache expiration times
+
+# Test Strategy:
+1. Unit test caching functions
+2. Verify cache hit and miss scenarios
+3. Test cache invalidation
+4. Measure performance improvement with caching enabled

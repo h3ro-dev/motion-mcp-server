@@ -1,0 +1,18 @@
+# Task ID: 8
+# Title: Implement Project Management Endpoints
+# Status: pending
+# Dependencies: 5
+# Priority: high
+# Description: Create MCP tools for project management, including listing, retrieving, and creating projects.
+# Details:
+1. Create a 'projects' module in src/tools/
+2. Implement 'motion_list_projects' tool with workspace filtering
+3. Create 'motion_get_project' for detailed project information
+4. Implement 'motion_create_project' with support for descriptions and custom fields
+5. Use Zod for input validation in all tools
+
+# Test Strategy:
+1. Unit test each project management tool
+2. Integration test with mock API responses
+3. Verify proper error handling for each endpoint
+4. Test creation of projects with various properties

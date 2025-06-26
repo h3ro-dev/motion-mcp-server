@@ -1,0 +1,19 @@
+# Task ID: 9
+# Title: Develop Workspace and User Management Endpoints
+# Status: pending
+# Dependencies: 5
+# Priority: medium
+# Description: Implement MCP tools for managing workspaces and users, including listing workspaces, retrieving user information, and getting available statuses.
+# Details:
+1. Create a 'workspaces' module in src/tools/
+2. Implement 'motion_list_workspaces' tool
+3. Create 'motion_get_user' for current user and all users
+4. Implement 'motion_list_users' with workspace and team filtering
+5. Create 'motion_get_statuses' for retrieving available statuses per workspace
+6. Use Zod for input validation in all tools
+
+# Test Strategy:
+1. Unit test each workspace and user management tool
+2. Integration test with mock API responses
+3. Verify proper error handling for each endpoint
+4. Test retrieval of user information and statuses

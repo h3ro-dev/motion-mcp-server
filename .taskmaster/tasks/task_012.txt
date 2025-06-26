@@ -1,0 +1,19 @@
+# Task ID: 12
+# Title: Implement Custom Fields Endpoints
+# Status: pending
+# Dependencies: 5, 8
+# Priority: low
+# Description: Create MCP tools for managing custom fields, including listing, creating, and deleting custom fields.
+# Details:
+1. Create a 'custom-fields' module in src/tools/
+2. Implement 'motion_list_custom_fields' tool
+3. Create 'motion_create_custom_field' with support for various field types
+4. Implement 'motion_delete_custom_field' tool
+5. Add 'motion_assign_custom_field' for managing field assignments to projects and tasks
+6. Use Zod for input validation in all tools
+
+# Test Strategy:
+1. Unit test each custom field management tool
+2. Test creation of different custom field types
+3. Verify proper assignment of custom fields to projects and tasks
+4. Integration test with mock API responses

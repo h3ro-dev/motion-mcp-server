@@ -1,0 +1,20 @@
+# Task ID: 10
+# Title: Implement Comments and Collaboration Endpoints
+# Status: pending
+# Dependencies: 6
+# Priority: medium
+# Description: Create MCP tools for managing comments and collaboration features, including retrieving and creating comments.
+# Details:
+1. Create a 'comments' module in src/tools/
+2. Implement 'motion_get_task_comments' with pagination support
+3. Create 'motion_create_comment' with GitHub Flavored Markdown support
+4. Use 'marked' library (npm install marked) for Markdown parsing
+5. Include creator information and timestamps in comment data
+6. Implement proper error handling for comment operations
+7. Use Zod for input validation in all tools
+
+# Test Strategy:
+1. Unit test each comment management tool
+2. Test pagination functionality for retrieving comments
+3. Verify Markdown parsing in comment creation
+4. Integration test with mock API responses

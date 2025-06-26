@@ -1,0 +1,19 @@
+# Task ID: 18
+# Title: Develop Version Compatibility Checking
+# Status: pending
+# Dependencies: 5
+# Priority: low
+# Description: Implement a system to check and ensure compatibility with the Motion API version.
+# Details:
+1. Create a 'version' module in src/version/
+2. Implement function to fetch current Motion API version
+3. Create a version compatibility matrix
+4. Implement version checking on server startup
+5. Add warnings for deprecated features or upcoming changes
+6. Integrate version checking in API client
+
+# Test Strategy:
+1. Unit test version checking functions
+2. Test handling of different API versions
+3. Verify proper warnings for deprecated features
+4. Integration test version checking on server startup

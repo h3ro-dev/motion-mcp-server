@@ -1,0 +1,80 @@
+# Task ID: 4
+# Title: Implement Rate Limiting Module
+# Status: pending
+# Dependencies: 1, 3
+# Priority: high
+# Description: Develop a rate limiting module using SQLite to track and enforce API request limits.
+# Details:
+1. Create a 'rate-limit' module in src/rate-limit/
+2. Set up SQLite database connection using 'sqlite3' library
+3. Create a table to store request timestamps
+4. Implement a function to check if a request is within rate limits (12 requests per 3-minute rolling window)
+5. Create functions to add and remove request records
+6. Implement exponential backoff for failed requests using 'exponential-backoff' library (npm install exponential-backoff)
+7. Add error handling and clear feedback for rate limit hits
+
+# Test Strategy:
+1. Unit test rate limit checking function
+2. Test database operations (insert, delete, query)
+3. Simulate rapid requests to verify rate limiting
+4. Test exponential backoff functionality
+
+# Subtasks:
+## 1. Set up SQLite database for rate limiting [pending]
+### Dependencies: None
+### Description: Create the rate-limit module directory and implement SQLite database connection and schema
+### Details:
+1. Create directory structure at src/rate-limit/
+2. Install sqlite3 package
+3. Create a database.js file to handle connection setup
+4. Implement a function to initialize the database
+5. Create a schema with a 'requests' table containing columns for id, ip_address, endpoint, timestamp
+6. Add functions for database connection management (open/close)
+
+## 2. Implement request tracking functions [pending]
+### Dependencies: 4.1
+### Description: Create functions to add, query, and clean up request records in the SQLite database
+### Details:
+1. Create a requests.js file in the rate-limit module
+2. Implement addRequest(ip, endpoint) function to store new request records
+3. Implement getRequests(ip, endpoint, timeWindow) to retrieve requests within the time window
+4. Create a cleanupOldRequests() function to remove expired request records
+5. Add error handling for database operations
+
+## 3. Develop rate limit checking logic [pending]
+### Dependencies: 4.2
+### Description: Implement the core logic to determine if a request exceeds the rate limit of 12 requests per 3-minute rolling window
+### Details:
+1. Create a limiter.js file in the rate-limit module
+2. Implement isRateLimited(ip, endpoint) function that:
+   - Retrieves recent requests from the database
+   - Counts requests within the 3-minute window
+   - Returns true if count >= 12, false otherwise
+3. Add timestamp management to ensure accurate rolling window
+4. Implement proper error handling
+
+## 4. Create Express middleware for rate limiting [pending]
+### Dependencies: 4.3
+### Description: Develop middleware that can be applied to routes to enforce rate limits
+### Details:
+1. Create middleware.js file in the rate-limit module
+2. Implement rateLimitMiddleware function that:
+   - Extracts client IP and requested endpoint
+   - Calls isRateLimited to check if request should be allowed
+   - Allows request to proceed if under limit
+   - Returns 429 Too Many Requests with appropriate headers if limit exceeded
+3. Add X-RateLimit-Limit and X-RateLimit-Remaining headers
+4. Implement retry-after header with appropriate timing
+
+## 5. Implement exponential backoff and error handling [pending]
+### Dependencies: 4.4
+### Description: Add exponential backoff for failed requests and comprehensive error handling
+### Details:
+1. Install exponential-backoff library
+2. Create backoff.js file in the rate-limit module
+3. Implement retryWithBackoff function that uses the exponential-backoff library
+4. Create clear error messages and logging for rate limit hits
+5. Implement a function to calculate and suggest appropriate retry times
+6. Add module index.js that exports all components with proper documentation
+7. Create usage examples for the module
+

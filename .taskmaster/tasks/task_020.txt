@@ -1,0 +1,19 @@
+# Task ID: 20
+# Title: Develop API Reference Documentation
+# Status: pending
+# Dependencies: 16
+# Priority: medium
+# Description: Create comprehensive API reference documentation for all MCP tools and endpoints.
+# Details:
+1. Use 'typedoc' (npm install typedoc) for generating documentation from TypeScript
+2. Create a documentation template for each MCP tool
+3. Include detailed descriptions, input/output schemas, and examples for each tool
+4. Generate HTML documentation
+5. Implement a search functionality in the documentation
+6. Include a changelog to track API changes
+
+# Test Strategy:
+1. Verify all MCP tools are properly documented
+2. Ensure generated documentation is accurate and complete
+3. Test search functionality in the documentation
+4. Verify changelog is up-to-date

@@ -1,0 +1,20 @@
+# Task ID: 5
+# Title: Create Base API Client
+# Status: pending
+# Dependencies: 2, 3, 4
+# Priority: high
+# Description: Develop a base API client to handle HTTP requests to the Motion API.
+# Details:
+1. Create an 'api-client' module in src/api-client/
+2. Use Axios to create a base API client
+3. Implement request interceptor for adding X-API-Key header
+4. Add response interceptor for error handling
+5. Implement retry logic for transient failures using 'axios-retry' (npm install axios-retry)
+6. Create methods for GET, POST, PUT, DELETE requests
+7. Integrate rate limiting module to prevent exceeding API limits
+
+# Test Strategy:
+1. Unit test API client methods
+2. Mock API responses to test error handling
+3. Verify correct headers are sent with requests
+4. Test retry logic with simulated failures

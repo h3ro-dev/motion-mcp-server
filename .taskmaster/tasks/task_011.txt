@@ -1,0 +1,20 @@
+# Task ID: 11
+# Title: Develop Schedule Management Endpoints
+# Status: pending
+# Dependencies: 5, 9
+# Priority: medium
+# Description: Implement MCP tools for managing schedules and availability, including retrieving user schedules and handling timezones.
+# Details:
+1. Create a 'schedules' module in src/tools/
+2. Implement 'motion_get_user_schedule' tool
+3. Create 'motion_get_user_availability' for checking free/busy times
+4. Use 'moment-timezone' library (npm install moment-timezone) for timezone handling
+5. Implement function to return schedule breakouts by day
+6. Add support for different schedule views (day, week, month)
+7. Use Zod for input validation in all tools
+
+# Test Strategy:
+1. Unit test each schedule management tool
+2. Test timezone conversions and handling
+3. Verify correct schedule breakouts for different time ranges
+4. Integration test with mock API responses
